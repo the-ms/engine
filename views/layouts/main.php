@@ -4,8 +4,8 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use yii\helpers\Url;
+use app\components\Navigation;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
@@ -16,6 +16,7 @@ AppAsset::register($this);
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
@@ -24,46 +25,76 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/site/login']] :
-                [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ],
-        ],
-    ]);
-    NavBar::end();
-    ?>
+<div class="s-wrapper">
+    <header class="s-header">
+        <div class="s-container">
+            <div class="s-logo">
+                <?=Html::img("/i/logo.png");?>
+                <h2>Site title</h2>
+            </div>
+        </div>
+    </header>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
+    <nav class="navbar navbar-default">
+        <div class="s-container">
+            <form class="navbar-form navbar-right" action="http://www.yandex.ru/yandsearch">
+                <input name="stype" value="www" type="hidden">
+                <input name="surl" value="<?=Url::base(true)?>" type="hidden">
+                <div class="form-group">
+                    <input name="text" type="search" class="form-control" placeholder="Текст поиска">
+                </div>
+                <button type="submit" class="btn btn-default">Найти</button>
+            </form>
+            <?
+            echo Navigation::widget([
+                'options' => ['class' => 'navbar-nav'],
+                'items' => [
+                    ['label' => 'Home', 'url' => ['/site/index']],
+                    ['label' => 'About', 'url' => ['/site/about']],
+                    ['label' => 'Contact', 'url' => ['/site/contact']],
+//            Yii::$app->user->isGuest ?
+//                ['label' => 'Login', 'url' => ['/site/login']] :
+//                [
+//                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+//                    'url' => ['/site/logout'],
+//                    'linkOptions' => ['data-method' => 'post']
+//                ],
+                ],
+            ]);
+            ?>
+        </div>
+    </nav>
+
+
+    <div class="s-container">
+        <?
+            echo Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]);
+        ?>
+        <div class="row">
+            <aside class="s-aside col-xs-6 col-sm-3 sidebar-offcanvas">
+                <?
+                echo Navigation::widget([
+                    'options' => ['class' => 'nav-pills nav-stacked'],
+                    'items' => [
+                        ['label' => 'Home', 'url' => ['/site/index']],
+                        ['label' => 'About', 'url' => ['/site/about']],
+                        ['label' => 'Contact', 'url' => ['/site/contact']],
+                    ],
+                ]);
+                ?>
+            </aside>
+            <section class="s-section col-xs-12 col-sm-9">
+                <?=$content;?>
+            </section>
+        </div>
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+<footer class="s-footer">
+    <div class="s-container">
+       &copy; My Company <?= date('Y') ?>
     </div>
 </footer>
 
