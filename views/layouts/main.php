@@ -51,7 +51,7 @@ AppAsset::register($this);
                 'items' => [
                     ['label' => 'Главная', 'url' => ['/site/index']],
                     ['label' => 'Контакты', 'url' => ['/contacts/index']],
-                    ['label' => 'Обратная связь', 'url' => ['/site/feedback']],
+                    ['label' => 'Обратная связь', 'url' => ['/feedback/index']],
 //            Yii::$app->user->isGuest ?
 //                ['label' => 'Login', 'url' => ['/site/login']] :
 //                [
@@ -80,7 +80,7 @@ AppAsset::register($this);
                     'items' => [
                         ['label' => 'Главная', 'url' => ['/site/index']],
                         ['label' => 'Контакты', 'url' => ['/contacts/index']],
-                        ['label' => 'Обратная связь', 'url' => ['/site/feedback']],
+                        ['label' => 'Обратная связь', 'url' => ['/feedback/index']],
                     ],
                 ]);
                 ?>
