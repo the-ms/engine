@@ -49,9 +49,9 @@ AppAsset::register($this);
             echo Navigation::widget([
                 'options' => ['class' => 'navbar-nav'],
                 'items' => [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'About', 'url' => ['/site/about']],
-                    ['label' => 'Contact', 'url' => ['/site/contact']],
+                    ['label' => 'Главная', 'url' => ['/site/index']],
+                    ['label' => 'Контакты', 'url' => ['/contacts/index']],
+                    ['label' => 'Обратная связь', 'url' => ['/site/feedback']],
 //            Yii::$app->user->isGuest ?
 //                ['label' => 'Login', 'url' => ['/site/login']] :
 //                [
@@ -78,9 +78,9 @@ AppAsset::register($this);
                 echo Navigation::widget([
                     'options' => ['class' => 'nav-pills nav-stacked'],
                     'items' => [
-                        ['label' => 'Home', 'url' => ['/site/index']],
-                        ['label' => 'About', 'url' => ['/site/about']],
-                        ['label' => 'Contact', 'url' => ['/site/contact']],
+                        ['label' => 'Главная', 'url' => ['/site/index']],
+                        ['label' => 'Контакты', 'url' => ['/contacts/index']],
+                        ['label' => 'Обратная связь', 'url' => ['/site/feedback']],
                     ],
                 ]);
                 ?>
