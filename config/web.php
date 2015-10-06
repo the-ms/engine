@@ -41,8 +41,19 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
-            'showScriptName' => false,
             'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => array(
+                'admin/index' => 'admin/default/index',
+                '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
+                '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ),
+        ],
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
         ],
     ],
     'params' => $params,
