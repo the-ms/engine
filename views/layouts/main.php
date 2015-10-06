@@ -50,6 +50,7 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav'],
                 'items' => [
                     ['label' => 'Главная', 'url' => ['/site/index']],
+                    ['label' => 'Модуль', 'url' => ['/module/index']],
                     ['label' => 'Контакты', 'url' => ['/contacts/index']],
                     ['label' => 'Обратная связь', 'url' => ['/feedback/index']],
 //            Yii::$app->user->isGuest ?
@@ -79,6 +80,7 @@ AppAsset::register($this);
                     'options' => ['class' => 'nav-pills nav-stacked'],
                     'items' => [
                         ['label' => 'Главная', 'url' => ['/site/index']],
+                        ['label' => 'Модуль', 'url' => ['/module/index']],
                         ['label' => 'Контакты', 'url' => ['/contacts/index']],
                         ['label' => 'Обратная связь', 'url' => ['/feedback/index']],
                     ],
