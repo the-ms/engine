@@ -44,16 +44,17 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => array(
-                'admin/index' => 'admin/default/index',
+                '<module:\w+>/<action:\w+>/<id:\d+>' => '<module>/default/<action>',
                 '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
-                '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
+                '<module:\w+>/<controller:\w+>' => '<module>/<controller>',
+                '<module:\w+>/<action:\w+>' => '<module>/default/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ],
     ],
     'modules' => [
-        'admin' => [
-            'class' => 'app\modules\admin\Module',
+        'module' => [
+            'class' => 'app\modules\module\Module',
         ],
     ],
     'params' => $params,

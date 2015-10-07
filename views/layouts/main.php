@@ -49,10 +49,10 @@ AppAsset::register($this);
             echo Navigation::widget([
                 'options' => ['class' => 'navbar-nav'],
                 'items' => [
-                    ['label' => 'Главная', 'url' => ['/site/index']],
-                    ['label' => 'Модуль', 'url' => ['/module/index']],
-                    ['label' => 'Контакты', 'url' => ['/contacts/index']],
-                    ['label' => 'Обратная связь', 'url' => ['/feedback/index']],
+                    ['label' => 'Главная', 'url' => ['/']],
+                    ['label' => 'Модуль', 'url' => ['/module']],
+                    ['label' => 'Контакты', 'url' => ['/contacts']],
+                    ['label' => 'Обратная связь', 'url' => ['/feedback']],
 //            Yii::$app->user->isGuest ?
 //                ['label' => 'Login', 'url' => ['/site/login']] :
 //                [
@@ -79,10 +79,10 @@ AppAsset::register($this);
                 echo Navigation::widget([
                     'options' => ['class' => 'nav-pills nav-stacked'],
                     'items' => [
-                        ['label' => 'Главная', 'url' => ['/site/index']],
-                        ['label' => 'Модуль', 'url' => ['/module/index']],
-                        ['label' => 'Контакты', 'url' => ['/contacts/index']],
-                        ['label' => 'Обратная связь', 'url' => ['/feedback/index']],
+                        ['label' => 'Главная', 'url' => ['/']],
+                        ['label' => 'Модуль', 'url' => ['/module']],
+                        ['label' => 'Контакты', 'url' => ['/contacts']],
+                        ['label' => 'Обратная связь', 'url' => ['/feedback']],
                     ],
                 ]);
                 ?>

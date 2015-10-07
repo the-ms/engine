@@ -1,7 +1,7 @@
 <?php
 /**
  * @var $this yii\web\View
- * @var app\models\Module[] $items
+ * @var app\modules\module\models\Module[] $items
  */
 
 use yii\helpers\Html;
@@ -14,7 +14,7 @@ $this->title = 'Модуль';
         <?
         foreach ($items as $item) { ?>
             <li>
-                <a href="view/<?=$item->id?>"><?=Html::encode($item->title) ?></a>
+                <a href="/module/view/<?=$item->id?>"><?=Html::encode($item->title) ?></a>
             </li>
         <? } ?>
     </ul>

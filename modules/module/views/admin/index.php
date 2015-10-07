@@ -1,7 +1,7 @@
 <?php
 /**
  * @var $this yii\web\View
- * @var app\models\Module[] $items
+ * @var app\modules\module\models\Module[] $items
  */
 
 use yii\helpers\Html;

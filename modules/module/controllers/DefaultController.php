@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\modules\module\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\models\Module;
+use app\modules\module\models\Module;
 use yii\web\HttpException;
 
-class ModuleController extends Controller
+class DefaultController extends Controller
 {
     public function actionIndex()
     {
