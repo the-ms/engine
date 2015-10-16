@@ -12,7 +12,35 @@ class AdminController extends Controller
 
     public function actionIndex()
     {
-        $items = Module::find()->all();
+        $items = Module::find()->orderBy('id')->all();
         return $this->render('index', ['items' => $items]);
+    }
+
+    public function actionAdd()
+    {
+        $model = new Module();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('edit');
+
+            return $this->redirect('/module/admin');
+        }
+
+        return $this->render('edit', ['action' => 'add', 'model' => $model]);
+    }
+
+    public function actionEdit($id)
+    {
+        if (Yii::$app->request->isPost) {
+            $model = new Module();
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                Yii::$app->session->setFlash('edit');
+
+                return $this->redirect('/module/admin');
+            }
+        } else {
+            $model = Module::findOne($id);
+        }
+
+        return $this->render('edit', ['model' => $model]);
     }
 }

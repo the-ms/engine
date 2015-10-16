@@ -10,4 +10,19 @@ use yii\db\ActiveRecord;
  * @property string text
  */
 class Module extends ActiveRecord {
+
+    public function attributeLabels()
+    {
+        return [
+            'title' => 'Заголовок',
+            'text' => 'Текст',
+        ];
+    }
+
+    public function scenarios()
+    {
+        return [
+            'default' => ['title', 'text'],
+        ];
+    }
 }

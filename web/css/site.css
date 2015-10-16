@@ -2,6 +2,15 @@ html, body {
     height: 100%;
 }
 
+.glyphicon {
+    color: #888;
+}
+
+.glyphicon:hover {
+    color: #000;
+    text-decoration: none;
+}
+
 .s-wrapper {
     min-height: 100%;
     height: auto;
