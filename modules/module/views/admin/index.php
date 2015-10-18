@@ -15,6 +15,10 @@ $this->title = 'Модуль';
         <div class="alert alert-success">Запись успешно сохранена</div>
     <? } ?>
 
+    <? if (Yii::$app->session->hasFlash('delete')) { ?>
+        <div class="alert alert-success">Запись успешно удалена</div>
+    <? } ?>
+
     <table class="table">
         <?
         foreach ($items as $item) { ?>
@@ -22,7 +26,7 @@ $this->title = 'Модуль';
                 <td><?=Html::encode($item->title);?></td>
                 <td><a href="/module/view/<?=$item->id?>" class="glyphicon glyphicon-eye-open" title="Посмотреть"></a></td>
                 <td><a href="http://engine/module/admin/edit/<?=$item->id?>" class="glyphicon glyphicon-pencil" title="Редактировать"></a></td>
-                <td><a href="http://engine/module/admin/delete/<?=$item->id?>" class="glyphicon glyphicon-trash" title="Удалить"></a></td>
+                <td><a href="http://engine/module/admin/delete/<?=$item->id?>" class="glyphicon glyphicon-trash js-delete" title="Удалить"></a></td>
             </tr>
         <? } ?>
     </table>

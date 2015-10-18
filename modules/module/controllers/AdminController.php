@@ -43,4 +43,12 @@ class AdminController extends Controller
 
         return $this->render('edit', ['model' => $model]);
     }
+
+    public function actionDelete($id)
+    {
+        $item = Module::find()->where(['id' => $id])->one();
+        $item->delete();
+        Yii::$app->session->setFlash('delete');
+        return $this->redirect('/module/admin');
+    }
 }
