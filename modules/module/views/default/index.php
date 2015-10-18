@@ -18,4 +18,5 @@ $this->title = 'Модуль';
             </li>
         <? } ?>
     </ul>
+    <a href="/module/add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Добавить</a>
 </div>

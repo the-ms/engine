@@ -30,5 +30,5 @@ $this->title = 'Модуль';
             </tr>
         <? } ?>
     </table>
-    <a href="http://engine/module/admin/add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Добавить</a>
+    <a href="/module/admin/add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Добавить</a>
 </div>

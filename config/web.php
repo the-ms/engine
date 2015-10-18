@@ -44,10 +44,13 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => array(
-                '<module:\w+>/<action:\w+>/<id:\d+>' => '<module>/default/<action>',
+                '<module:\w+>/admin' => '<module>/admin',
+
                 '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
+
+                '<module:\w+>/<action:\w+>/<id:\d+>' => '<module>/default/<action>',
                 '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
-                '<module:\w+>/<controller:\w+>' => '<module>/<controller>',
+
                 '<module:\w+>/<action:\w+>' => '<module>/default/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),

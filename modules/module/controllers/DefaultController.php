@@ -29,4 +29,16 @@ class DefaultController extends Controller
 
         return $this->render('view', ['item' => $item]);
     }
+
+    public function actionAdd()
+    {
+        $model = new Module();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('edit');
+
+            return $this->redirect('/module');
+        }
+
+        return $this->render('edit', ['action' => 'add', 'model' => $model]);
+    }
 }
