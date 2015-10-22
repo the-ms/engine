@@ -42,13 +42,11 @@ AppAsset::register($this);
                     ['label' => 'Главная', 'url' => ['/']],
                     ['label' => 'Администрирование', 'url' => ['/admin']],
                     ['label' => 'Модуль', 'url' => ['/module/admin']],
-//            Yii::$app->user->isGuest ?
-//                ['label' => 'Login', 'url' => ['/site/login']] :
-//                [
-//                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-//                    'url' => ['/site/logout'],
-//                    'linkOptions' => ['data-method' => 'post']
-//                ],
+                    [
+                        'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
+                        'url' => ['/site/logout'],
+                        'linkOptions' => ['data-method' => 'post']
+                    ],
                 ],
             ]);
             ?>

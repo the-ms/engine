@@ -53,14 +53,10 @@ AppAsset::register($this);
                     ['label' => 'Модуль', 'url' => ['/module']],
                     ['label' => 'Контакты', 'url' => ['/contacts']],
                     ['label' => 'Обратная связь', 'url' => ['/feedback']],
-//            Yii::$app->user->isGuest ?
-//                ['label' => 'Login', 'url' => ['/site/login']] :
-//                [
-//                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-//                    'url' => ['/site/logout'],
-//                    'linkOptions' => ['data-method' => 'post']
-//                ],
-                ],
+                Yii::$app->user->isGuest
+                    ? ['label' => 'Войти', 'url' => ['/site/login']]
+                    : ['label' => 'Администрирование', 'url' => ['/admin']]
+                ]
             ]);
             ?>
         </div>
