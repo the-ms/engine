@@ -7,23 +7,21 @@ use yii\db\ActiveRecord;
 /**
  * @property int id
  * @property string title
- * @property string text
  */
-class Module extends ActiveRecord {
+class ModuleCat extends ActiveRecord {
 
     public function attributeLabels()
     {
         return [
-            'title' => 'Заголовок',
-            'text' => 'Текст',
-            'cat' => 'Категория',
+            'title' => 'Название',
+            'cat' => 'Родительская категория',
         ];
     }
 
     public function scenarios()
     {
         return [
-            'default' => ['title', 'text', 'cat'],
+            'default' => ['title', 'cat'],
         ];
     }
 }
