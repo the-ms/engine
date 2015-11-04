@@ -26,8 +26,7 @@ $this->title = 'Модуль';
     <? } ?>
 
     <table class="table">
-        <?
-        foreach ($cats as $cat) { ?>
+        <? foreach ($cats as $cat) { ?>
             <tr>
                 <td><span class="glyphicon glyphicon-folder-open"></span> &nbsp; <a href="/module/admin/cat/<?=$cat->id?>"><?=Html::encode($cat->title);?></a></td>
                 <td><a href="/module/cat/<?=$cat->id?>" class="glyphicon glyphicon-eye-open" title="Посмотреть"></a></td>
@@ -35,8 +34,7 @@ $this->title = 'Модуль';
                 <td><a href="/module/admin/deletecat/<?=$cat->id?>" class="glyphicon glyphicon-trash js-delete" title="Удалить"></a></td>
             </tr>
         <? } ?>
-        <?
-        foreach ($items as $item) { ?>
+        <? foreach ($items as $item) { ?>
             <tr>
                 <td><?=Html::encode($item->title);?></td>
                 <td><a href="/module/view/<?=$item->id?>" class="glyphicon glyphicon-eye-open" title="Посмотреть"></a></td>

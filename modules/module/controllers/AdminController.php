@@ -3,12 +3,11 @@
 namespace app\modules\module\controllers;
 
 use Yii;
-use yii\web\Controller;
 use app\modules\module\models\Module;
 use app\modules\module\models\ModuleCat;
 use yii\filters\AccessControl;
 
-class AdminController extends Controller
+class AdminController extends DefaultController
 {
     public $layout = '/admin';
 
@@ -25,13 +24,6 @@ class AdminController extends Controller
                 ],
             ],
         ];
-    }
-
-    public function actionIndex()
-    {
-        $items = Module::findAll(['cat' => 0]);
-        $cats = ModuleCat::findAll(['cat' => 0]);
-        return $this->render('cat', ['items' => $items, 'cats' => $cats]);
     }
 
     public function actionAdd()
@@ -73,14 +65,6 @@ class AdminController extends Controller
         $item->delete();
         Yii::$app->session->setFlash('delete');
         return $this->redirect('/module/admin' . $parent_dir);
-    }
-
-    public function actionCat($id)
-    {
-        $cat = ModuleCat::findOne($id);
-        $items = Module::findAll(['cat' => $id]);
-        $cats = ModuleCat::findAll(['cat' => $id]);
-        return $this->render('cat', ['cat' => $cat, 'items' => $items, 'cats' => $cats]);
     }
 
     public function actionAddcat()

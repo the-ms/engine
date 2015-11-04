@@ -5,14 +5,16 @@ namespace app\modules\module\controllers;
 use Yii;
 use yii\web\Controller;
 use app\modules\module\models\Module;
+use app\modules\module\models\ModuleCat;
 use yii\web\HttpException;
 
 class DefaultController extends Controller
 {
     public function actionIndex()
     {
-        $items = Module::find()->orderBy('id')->all();
-        return $this->render('index', ['items' => $items]);
+        $items = Module::findAll(['cat' => 0]);
+        $cats = ModuleCat::findAll(['cat' => 0]);
+        return $this->render('cat', ['items' => $items, 'cats' => $cats]);
     }
 
     public function actionView($id = null)
@@ -32,13 +34,23 @@ class DefaultController extends Controller
 
     public function actionAdd()
     {
-        $model = new Module();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('edit');
+        $item = new Module();
+        $cats = ModuleCat::find()->all();
 
-            return $this->redirect('/module');
+        if ($item->load(Yii::$app->request->post()) && $item->save()) {
+            Yii::$app->session->setFlash('edit');
+            $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
+            return $this->redirect('/module' . $parent_dir);
         }
 
-        return $this->render('edit', ['action' => 'add', 'model' => $model]);
+        return $this->render('edit', ['action' => 'add', 'item' => $item, 'cats' => $cats]);
+    }
+
+    public function actionCat($id)
+    {
+        $cat = ModuleCat::findOne($id);
+        $items = Module::findAll(['cat' => $id]);
+        $cats = ModuleCat::findAll(['cat' => $id]);
+        return $this->render('cat', ['cat' => $cat, 'items' => $items, 'cats' => $cats]);
     }
 }
