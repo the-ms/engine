@@ -5,6 +5,7 @@ namespace app\modules\module\controllers;
 use Yii;
 use app\modules\module\models\Module;
 use app\modules\module\models\ModuleCat;
+use yii\web\UploadedFile;
 use yii\filters\AccessControl;
 
 class AdminController extends DefaultController
@@ -31,10 +32,22 @@ class AdminController extends DefaultController
         $item = new Module();
         $cats = ModuleCat::find()->all();
 
-        if ($item->load(Yii::$app->request->post()) && $item->save()) {
-            Yii::$app->session->setFlash('edit');
-            $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
-            return $this->redirect('/module/admin' . $parent_dir);
+        if (Yii::$app->request->isPost) {
+            $uploaded_file = $item->file = UploadedFile::getInstance($item, 'file');
+
+            if ($item->load(Yii::$app->request->post()) && $item->validate()) {
+                $item->file = '';
+
+                if ($item->save()) {
+                    $item->file = $item->id . '.' . $uploaded_file->extension;
+                    $uploaded_file->saveAs('uploads/' . $this->module->id . '/' . $item->file);
+                    $item->save();
+
+                    Yii::$app->session->setFlash('edit');
+                    $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
+                    return $this->redirect('/module/admin' . $parent_dir);
+                }
+            }
         }
 
         return $this->render('edit', ['action' => 'add', 'item' => $item, 'cats' => $cats]);

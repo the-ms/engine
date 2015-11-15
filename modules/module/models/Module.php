@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
  * @property int id
  * @property string title
  * @property string text
+ * @property string file
  */
 class Module extends ActiveRecord {
 
@@ -16,6 +17,7 @@ class Module extends ActiveRecord {
         return [
             'title' => 'Заголовок',
             'text' => 'Текст',
+            'file' => 'Файл',
             'cat' => 'Категория',
         ];
     }
@@ -23,7 +25,7 @@ class Module extends ActiveRecord {
     public function scenarios()
     {
         return [
-            'default' => ['title', 'text', 'cat'],
+            'default' => ['title', 'text', 'file', 'cat'],
         ];
     }
 }

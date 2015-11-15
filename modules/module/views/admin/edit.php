@@ -26,9 +26,10 @@ foreach ($cats as $category) {
 
 <h1><?=Html::encode($this->title) ?></h1>
 
-<? $form = ActiveForm::begin(); ?>
+<? $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 <?=$form->field($item, 'title')->textInput()?>
 <?=$form->field($item, 'text')->textArea()?>
+<?=$form->field($item, 'file')->fileInput()?>
 <?=$form->field($item, 'cat')->dropDownList($cats_list)?>
 <?=Html::submitButton($button_text, ['class' => 'btn btn-primary'])?>
 <? ActiveForm::end(); ?>
