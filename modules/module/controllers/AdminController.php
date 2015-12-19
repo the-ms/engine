@@ -39,9 +39,11 @@ class AdminController extends DefaultController
                 $item->file = '';
 
                 if ($item->save()) {
-                    $item->file = $item->id . '.' . $uploaded_file->extension;
-                    $uploaded_file->saveAs('uploads/' . $this->module->id . '/' . $item->file);
-                    $item->save();
+                    if ($uploaded_file) {
+                        $item->file = $item->id . '.' . $uploaded_file->extension;
+                        $uploaded_file->saveAs('uploads/' . $this->module->id . '/' . $item->file);
+                        $item->save();
+                    }
 
                     Yii::$app->session->setFlash('edit');
                     $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
@@ -60,10 +62,22 @@ class AdminController extends DefaultController
         $cats = ModuleCat::find()->all();
 
         if (Yii::$app->request->isPost) {
-            if ($item->load(Yii::$app->request->post()) && $item->save()) {
-                Yii::$app->session->setFlash('edit');
-                $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
-                return $this->redirect('/module/admin' . $parent_dir);
+            $uploaded_file = $item->file = UploadedFile::getInstance($item, 'file');
+
+            if ($item->load(Yii::$app->request->post()) && $item->validate()) {
+                $item->file = '';
+
+                if ($item->save()) {
+                    if ($uploaded_file) {
+                        $item->file = $item->id . '.' . $uploaded_file->extension;
+                        $uploaded_file->saveAs('uploads/' . $this->module->id . '/' . $item->file);
+                        $item->save();
+                    }
+
+                    Yii::$app->session->setFlash('edit');
+                    $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
+                    return $this->redirect('/module/admin' . $parent_dir);
+                }
             }
         }
 

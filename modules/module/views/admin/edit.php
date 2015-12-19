@@ -29,7 +29,12 @@ foreach ($cats as $category) {
 <? $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 <?=$form->field($item, 'title')->textInput()?>
 <?=$form->field($item, 'text')->textArea()?>
-<?=$form->field($item, 'file')->fileInput()?>
+
+<?
+ $file_hint = $item->file ? '<a href="/uploads/module/' . $item->file . '">' . $item->file . '</a>' : '';
+?>
+<?=$form->field($item, 'file')->fileInput()->hint($file_hint)?>
+
 <?=$form->field($item, 'cat')->dropDownList($cats_list)?>
 <?=Html::submitButton($button_text, ['class' => 'btn btn-primary'])?>
 <? ActiveForm::end(); ?>
