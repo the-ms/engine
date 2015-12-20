@@ -34,14 +34,21 @@ class AdminController extends DefaultController
 
         if (Yii::$app->request->isPost) {
             $uploaded_file = $item->file = UploadedFile::getInstance($item, 'file');
+            $uploaded_image = $item->image = UploadedFile::getInstance($item, 'image');
 
             if ($item->load(Yii::$app->request->post()) && $item->validate()) {
                 $item->file = '';
+                $item->image = '';
 
                 if ($item->save()) {
                     if ($uploaded_file) {
                         $item->file = $item->id . '.' . $uploaded_file->extension;
                         $uploaded_file->saveAs('uploads/' . $this->module->id . '/' . $item->file);
+                        $item->save();
+                    }
+                    if ($uploaded_image) {
+                        $item->image = $item->id . '.' . $uploaded_image->extension;
+                        $uploaded_image->saveAs('uploads/' . $this->module->id . '/' . $item->image);
                         $item->save();
                     }
 
@@ -63,14 +70,21 @@ class AdminController extends DefaultController
 
         if (Yii::$app->request->isPost) {
             $uploaded_file = $item->file = UploadedFile::getInstance($item, 'file');
+            $uploaded_image = $item->image = UploadedFile::getInstance($item, 'image');
 
             if ($item->load(Yii::$app->request->post()) && $item->validate()) {
                 $item->file = '';
+                $item->image = '';
 
                 if ($item->save()) {
                     if ($uploaded_file) {
                         $item->file = $item->id . '.' . $uploaded_file->extension;
                         $uploaded_file->saveAs('uploads/' . $this->module->id . '/' . $item->file);
+                        $item->save();
+                    }
+                    if ($uploaded_image) {
+                        $item->image = $item->id . '.' . $uploaded_image->extension;
+                        $uploaded_image->saveAs('uploads/' . $this->module->id . '/' . $item->image);
                         $item->save();
                     }
 

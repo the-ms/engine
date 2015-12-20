@@ -16,3 +16,7 @@ $this->title = $item->title;
 <? if ($item->file) { ?>
     <p><a href="/uploads/module/<?=$item->file?>"><?=$item->file?></a></p>
 <? } ?>
+
+<? if ($item->image) { ?>
+    <p><a href="/uploads/module/<?=$item->image?>"><?=$item->image?></a></p>
+<? } ?>

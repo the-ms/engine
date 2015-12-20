@@ -35,6 +35,11 @@ foreach ($cats as $category) {
 ?>
 <?=$form->field($item, 'file')->fileInput()->hint($file_hint)?>
 
+<?
+$image_hint = $item->image ? '<a href="/uploads/module/' . $item->image . '">' . $item->image . '</a>' : '';
+?>
+<?=$form->field($item, 'image')->fileInput()->hint($image_hint)?>
+
 <?=$form->field($item, 'cat')->dropDownList($cats_list)?>
 <?=Html::submitButton($button_text, ['class' => 'btn btn-primary'])?>
 <? ActiveForm::end(); ?>
