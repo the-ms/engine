@@ -108,6 +108,26 @@ class AdminController extends DefaultController
         return $this->redirect('/module/admin' . $parent_dir);
     }
 
+    public function actionDeletefile($id)
+    {
+        /* @var Module $item */
+        $item = Module::findOne($id);
+        $item->file = '';
+        $item->save();
+        Yii::$app->session->setFlash('deletefile');
+        return $this->redirect('/module/admin/edit/' . $id);
+    }
+
+    public function actionDeleteimage($id)
+    {
+        /* @var Module $item */
+        $item = Module::findOne($id);
+        $item->image = '';
+        $item->save();
+        Yii::$app->session->setFlash('deletefile');
+        return $this->redirect('/module/admin/edit/' . $id);
+    }
+
     public function actionAddcat()
     {
         $cat = new ModuleCat();

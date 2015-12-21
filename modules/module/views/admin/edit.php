@@ -26,19 +26,31 @@ foreach ($cats as $category) {
 
 <h1><?=Html::encode($this->title) ?></h1>
 
+<? if (Yii::$app->session->hasFlash('deletefile')) { ?>
+    <div class="alert alert-success">Файл успешно удален</div>
+<? } ?>
+
 <? $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 <?=$form->field($item, 'title')->textInput()?>
 <?=$form->field($item, 'text')->textArea()?>
 
 <?
- $file_hint = $item->file ? '<a href="/uploads/module/' . $item->file . '">' . $item->file . '</a>' : '';
+    $file_hint = '';
+    if ($item->file) {
+        $file_link = '<a href="/uploads/module/' . $item->file . '">' . $item->file . '</a>';
+        $file_delete = '<a href="/module/admin/deletefile/' . $item->id . '" class="glyphicon glyphicon-trash js-delete" title="Удалить"></a>';
+    }
 ?>
-<?=$form->field($item, 'file')->fileInput()->hint($file_hint)?>
+<?=$form->field($item, 'file')->fileInput()->hint($file_link . ' '. $file_delete)?>
 
 <?
-$image_hint = $item->image ? '<a href="/uploads/module/' . $item->image . '">' . $item->image . '</a>' : '';
+$image_hint = '';
+if ($item->image) {
+    $image_link = '<a href="/uploads/module/' . $item->image . '">' . $item->image . '</a>';
+    $image_delete = '<a href="/module/admin/deleteimage/' . $item->id . '" class="glyphicon glyphicon-trash js-delete" title="Удалить"></a>';
+}
 ?>
-<?=$form->field($item, 'image')->fileInput()->hint($image_hint)?>
+<?=$form->field($item, 'image')->fileInput()->hint($image_link . ' '. $image_delete)?>
 
 <?=$form->field($item, 'cat')->dropDownList($cats_list)?>
 <?=Html::submitButton($button_text, ['class' => 'btn btn-primary'])?>
