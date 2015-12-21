@@ -7,6 +7,7 @@ use app\modules\module\models\Module;
 use app\modules\module\models\ModuleCat;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
+use yii\imagine\Image;
 
 class AdminController extends DefaultController
 {
@@ -49,6 +50,8 @@ class AdminController extends DefaultController
                     if ($uploaded_image) {
                         $item->image = $item->id . '.' . $uploaded_image->extension;
                         $uploaded_image->saveAs('uploads/' . $this->module->id . '/' . $item->image);
+                        Image::thumbnail('uploads/' . $this->module->id . '/' . $item->image, 120, 120)
+                            ->save('uploads/' . $this->module->id . '/s_' . $item->image);
                         $item->save();
                     }
 

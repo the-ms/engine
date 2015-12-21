@@ -18,5 +18,5 @@ $this->title = $item->title;
 <? } ?>
 
 <? if ($item->image) { ?>
-    <p><a href="/uploads/module/<?=$item->image?>"><?=$item->image?></a></p>
+    <p><a href="/uploads/module/<?=$item->image?>"><img src="/uploads/module/s_<?=$item->image?>"></a></p>
 <? } ?>
