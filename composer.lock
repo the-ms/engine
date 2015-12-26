@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4a11d3580bf3b4c29b4b8faa043b3c64",
+    "hash": "bad77c860bb27f05f3746a94a563665f",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -53,6 +53,56 @@
                 "mobile-first",
                 "responsive",
                 "web"
+            ]
+        },
+        {
+            "name": "bower-asset/ekko-lightbox",
+            "version": "v3.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ashleydw/lightbox.git",
+                "reference": "47bcba9c95e9d0a05dca985228fcfcce26ddeffa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ashleydw/lightbox/zipball/47bcba9c95e9d0a05dca985228fcfcce26ddeffa",
+                "reference": "47bcba9c95e9d0a05dca985228fcfcce26ddeffa",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": ">=3.0.0"
+            },
+            "require-dev": {
+                "bower-asset/grunt": "~0.4.1",
+                "bower-asset/grunt-banner": "~0.2.0",
+                "bower-asset/grunt-bump": "~0.0.14",
+                "bower-asset/grunt-contrib-coffee": "~0.8.0",
+                "bower-asset/grunt-contrib-uglify": "~0.2.2",
+                "bower-asset/grunt-contrib-watch": "~0.5.1",
+                "bower-asset/grunt-recess": "~0.3.3"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "./dist/ekko-lightbox.min.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "examples",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "license": [
+                "GNU GENERAL PUBLIC LICENSE"
+            ],
+            "description": "A lightbox gallery plugin for Bootstrap 3 based on the modal plugin",
+            "keywords": [
+                "bootstrap",
+                "gallery",
+                "jquery",
+                "lightbox",
+                "modal"
             ]
         },
         {

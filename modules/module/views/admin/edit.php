@@ -46,7 +46,7 @@ foreach ($cats as $category) {
 <?
 $image_hint = '';
 if ($item->image) {
-    $image_link = '<a href="/uploads/module/' . $item->image . '"><img src="/uploads/module/s_' . $item->image . '"></a>';
+    $image_link = '<a href="/uploads/module/' . $item->image . '" data-toggle="lightbox"><img src="/uploads/module/s_' . $item->image . '"></a>';
     $image_delete = '<a href="/module/admin/deleteimage/' . $item->id . '" class="glyphicon glyphicon-trash js-delete" title="Удалить"></a>';
 }
 ?>
