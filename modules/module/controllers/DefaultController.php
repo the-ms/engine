@@ -35,6 +35,7 @@ class DefaultController extends Controller
     public function actionAdd()
     {
         $item = new Module();
+        $item->date = date('Y-m-d');
         $cats = ModuleCat::find()->all();
 
         if ($item->load(Yii::$app->request->post()) && $item->save()) {

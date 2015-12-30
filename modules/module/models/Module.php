@@ -16,11 +16,20 @@ class Module extends ActiveRecord {
     public function attributeLabels()
     {
         return [
+            'cat' => 'Категория',
             'title' => 'Заголовок',
             'text' => 'Текст',
-            'file' => 'Файл',
+            'price' => 'Цена',
             'image' => 'Изображение',
-            'cat' => 'Категория',
+            'file' => 'Файл',
+            'name' => 'Имя',
+            'phone' => 'Телефон',
+            'url' => 'Адрес сайта',
+            'email' => 'E-mail',
+            'address' => 'Адрес',
+            'user' => 'Id пользователя',
+            'date' => 'Дата',
+            'active' => 'Отображать на сайте?',
         ];
     }
 
@@ -28,13 +37,17 @@ class Module extends ActiveRecord {
     {
         return [
             [['image'], 'file', 'extensions' => 'gif,png,jpg,jpeg'],
+            ['title', 'required'],
+            ['url', 'url'],
+            ['email', 'email'],
         ];
     }
 
     public function scenarios()
     {
         return [
-            'default' => ['title', 'text', 'file', 'image', 'cat'],
+            'default' => ['cat', 'title', 'text', 'image', 'file'],
+            'admin' => ['cat', 'title', 'text', 'price', 'image', 'file', 'name', 'phone', 'url', 'email', 'address', 'user', 'date', 'active'],
         ];
     }
 }

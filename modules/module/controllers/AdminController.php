@@ -31,7 +31,10 @@ class AdminController extends DefaultController
     public function actionAdd()
     {
         $item = new Module();
+        $item->scenario = 'admin';
         $cats = ModuleCat::find()->all();
+        $item->date = date('Y-m-d');
+        $item->user = 1;
 
         if (Yii::$app->request->isPost) {
             $uploaded_file = $item->file = UploadedFile::getInstance($item, 'file');
@@ -69,6 +72,7 @@ class AdminController extends DefaultController
     {
         /* @var Module $item */
         $item = Module::findOne($id);
+        $item->scenario = 'admin';
         $cats = ModuleCat::find()->all();
 
         if (Yii::$app->request->isPost) {
@@ -105,6 +109,7 @@ class AdminController extends DefaultController
     {
         /* @var Module $item */
         $item = Module::findOne($id);
+        $item->scenario = 'admin';
         $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
         $item->delete();
         Yii::$app->session->setFlash('delete');
@@ -115,6 +120,7 @@ class AdminController extends DefaultController
     {
         /* @var Module $item */
         $item = Module::findOne($id);
+        $item->scenario = 'admin';
         $item->file = '';
         $item->save();
         Yii::$app->session->setFlash('deletefile');
@@ -125,6 +131,7 @@ class AdminController extends DefaultController
     {
         /* @var Module $item */
         $item = Module::findOne($id);
+        $item->scenario = 'admin';
         $item->image = '';
         $item->save();
         Yii::$app->session->setFlash('deletefile');
