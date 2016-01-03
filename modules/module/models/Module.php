@@ -16,7 +16,7 @@ class Module extends ActiveRecord {
     public function attributeLabels()
     {
         return [
-            'cat' => 'Категория',
+            'cat_id' => 'Категория',
             'title' => 'Заголовок',
             'text' => 'Текст',
             'price' => 'Цена',
@@ -27,7 +27,7 @@ class Module extends ActiveRecord {
             'url' => 'Адрес сайта',
             'email' => 'E-mail',
             'address' => 'Адрес',
-            'user' => 'Id пользователя',
+            'user_id' => 'Id пользователя',
             'date' => 'Дата',
             'active' => 'Отображать на сайте?',
         ];
@@ -46,8 +46,8 @@ class Module extends ActiveRecord {
     public function scenarios()
     {
         return [
-            'default' => ['cat', 'title', 'text', 'image', 'file'],
-            'admin' => ['cat', 'title', 'text', 'price', 'image', 'file', 'name', 'phone', 'url', 'email', 'address', 'user', 'date', 'active'],
+            'default' => ['cat_id', 'title', 'text', 'image', 'file'],
+            'admin' => ['cat_id', 'title', 'text', 'price', 'image', 'file', 'name', 'phone', 'url', 'email', 'address', 'user_id', 'date', 'active'],
         ];
     }
 }

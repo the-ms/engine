@@ -60,7 +60,7 @@ if ($item->image) {
 ?>
 <?=$form->field($item, 'image')->fileInput()->hint($image_link . ' '. $image_delete)?>
 
-<?=$form->field($item, 'cat')->dropDownList($cats_list)?>
+<?=$form->field($item, 'cat_id')->dropDownList($cats_list)?>
 
 <?=Html::submitButton($button_text, ['class' => 'btn btn-primary'])?>
 <? ActiveForm::end(); ?>

@@ -34,7 +34,7 @@ class AdminController extends DefaultController
         $item->scenario = 'admin';
         $cats = ModuleCat::find()->all();
         $item->date = date('Y-m-d');
-        $item->user = 1;
+        $item->user_id = 1;
 
         if (Yii::$app->request->isPost) {
             $uploaded_file = $item->file = UploadedFile::getInstance($item, 'file');
@@ -59,7 +59,7 @@ class AdminController extends DefaultController
                     }
 
                     Yii::$app->session->setFlash('edit');
-                    $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
+                    $parent_dir = empty($item->cat_id) ? '' : '/cat/' . $item->cat_id;
                     return $this->redirect('/module/admin' . $parent_dir);
                 }
             }
@@ -96,7 +96,7 @@ class AdminController extends DefaultController
                     }
 
                     Yii::$app->session->setFlash('edit');
-                    $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
+                    $parent_dir = empty($item->cat_id) ? '' : '/cat/' . $item->cat_id;
                     return $this->redirect('/module/admin' . $parent_dir);
                 }
             }
@@ -110,7 +110,7 @@ class AdminController extends DefaultController
         /* @var Module $item */
         $item = Module::findOne($id);
         $item->scenario = 'admin';
-        $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
+        $parent_dir = empty($item->cat_id) ? '' : '/cat/' . $item->cat_id;
         $item->delete();
         Yii::$app->session->setFlash('delete');
         return $this->redirect('/module/admin' . $parent_dir);
@@ -141,10 +141,10 @@ class AdminController extends DefaultController
     public function actionAddcat()
     {
         $cat = new ModuleCat();
-        $cats = ModuleCat::findAll(['cat' => 0]);
+        $cats = ModuleCat::findAll(['cat_id' => 0]);
         if ($cat->load(Yii::$app->request->post()) && $cat->save()) {
             Yii::$app->session->setFlash('editcat');
-            $parent_dir = empty($cat->cat) ? '' : '/cat/' . $cat->cat;
+            $parent_dir = empty($cat->cat_id) ? '' : '/cat/' . $cat->cat_id;
             return $this->redirect('/module/admin' . $parent_dir);
         }
 
@@ -155,12 +155,12 @@ class AdminController extends DefaultController
     {
         /* @var ModuleCat $cat */
         $cat = ModuleCat::findOne($id);
-        $cats = ModuleCat::findAll(['cat' => 0]);
+        $cats = ModuleCat::findAll(['cat_id' => 0]);
 
         if (Yii::$app->request->isPost) {
             if ($cat->load(Yii::$app->request->post()) && $cat->save()) {
                 Yii::$app->session->setFlash('editcat');
-                $parent_dir = empty($cat->cat) ? '' : '/cat/' . $cat->cat;
+                $parent_dir = empty($cat->cat_id) ? '' : '/cat/' . $cat->cat_id;
                 return $this->redirect('/module/admin' . $parent_dir);
             }
         }
@@ -172,7 +172,7 @@ class AdminController extends DefaultController
     {
         /* @var ModuleCat $cat */
         $cat = ModuleCat::findOne($id);
-        $parent_dir = empty($cat->cat) ? '' : '/cat/' . $cat->cat;
+        $parent_dir = empty($cat->cat_id) ? '' : '/cat/' . $cat->cat_id;
         $cat->delete();
         Yii::$app->session->setFlash('deletecat');
         return $this->redirect('/module/admin' . $parent_dir);

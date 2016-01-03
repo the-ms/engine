@@ -29,6 +29,6 @@ foreach ($cats as $category) {
 <? $form = ActiveForm::begin(); ?>
 <?=$form->field($item, 'title')->textInput()?>
 <?=$form->field($item, 'text')->textArea()?>
-<?=$form->field($item, 'cat')->dropDownList($cats_list)?>
+<?=$form->field($item, 'cat_id')->dropDownList($cats_list)?>
 <?=Html::submitButton($button_text, ['class' => 'btn btn-primary'])?>
 <? ActiveForm::end(); ?>

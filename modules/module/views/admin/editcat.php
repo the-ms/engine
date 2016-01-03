@@ -28,6 +28,6 @@ foreach ($cats as $category) {
 
 <? $form = ActiveForm::begin(); ?>
 <?=$form->field($cat, 'title')->textInput()?>
-<?=$form->field($cat, 'cat')->dropDownList($cats_list)?>
+<?=$form->field($cat, 'cat_id')->dropDownList($cats_list)?>
 <?=Html::submitButton($button_text, ['class' => 'btn btn-primary'])?>
 <? ActiveForm::end(); ?>

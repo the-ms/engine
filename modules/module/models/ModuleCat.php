@@ -14,14 +14,14 @@ class ModuleCat extends ActiveRecord {
     {
         return [
             'title' => 'Название',
-            'cat' => 'Родительская категория',
+            'cat_id' => 'Родительская категория',
         ];
     }
 
     public function scenarios()
     {
         return [
-            'default' => ['title', 'cat'],
+            'default' => ['title', 'cat_id'],
         ];
     }
 }

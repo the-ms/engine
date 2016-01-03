@@ -12,8 +12,8 @@ class DefaultController extends Controller
 {
     public function actionIndex()
     {
-        $items = Module::findAll(['cat' => 0]);
-        $cats = ModuleCat::findAll(['cat' => 0]);
+        $items = Module::findAll(['cat_id' => 0]);
+        $cats = ModuleCat::findAll(['cat_id' => 0]);
         return $this->render('cat', ['items' => $items, 'cats' => $cats]);
     }
 
@@ -40,7 +40,7 @@ class DefaultController extends Controller
 
         if ($item->load(Yii::$app->request->post()) && $item->save()) {
             Yii::$app->session->setFlash('edit');
-            $parent_dir = empty($item->cat) ? '' : '/cat/' . $item->cat;
+            $parent_dir = empty($item->cat_id) ? '' : '/cat/' . $item->cat_id;
             return $this->redirect('/module' . $parent_dir);
         }
 
@@ -50,8 +50,8 @@ class DefaultController extends Controller
     public function actionCat($id)
     {
         $cat = ModuleCat::findOne($id);
-        $items = Module::findAll(['cat' => $id]);
-        $cats = ModuleCat::findAll(['cat' => $id]);
-        return $this->render('cat', ['cat' => $cat, 'items' => $items, 'cats' => $cats]);
+        $items = Module::findAll(['cat_id' => $id]);
+        $cats = ModuleCat::findAll(['cat_id' => $id]);
+        return $this->render('cat', ['cat_id' => $cat, 'items' => $items, 'cats' => $cats]);
     }
 }
