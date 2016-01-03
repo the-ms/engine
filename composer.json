@@ -19,7 +19,7 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yiisoft/yii2-imagine": "*",
-		"bower-asset/ekko-lightbox": "~3.3"
+        "drmonty/ekko-lightbox": "^3.3"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

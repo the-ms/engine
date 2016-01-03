@@ -61,6 +61,9 @@ $config = [
             'class' => 'app\modules\module\Module',
         ],
     ],
+    'aliases' => [
+        '@drmonty' => dirname(__DIR__) . '\vendor\drmonty',
+    ],
     'params' => $params,
 ];
 
